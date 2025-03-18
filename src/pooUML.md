@@ -1,14 +1,40 @@
 ```mermaid
+---
+config:
+  layout: elk
+  elk:
+    mergeEdges: false
+    nodePlacementStrategy: NETWORK_SIMPLEX
+  theme: dark
+---
 classDiagram
 
-    iPhone *-- ReprodutorMusical
-    iPhone *-- AparelhoTelefonico
-    iPhone *-- NavegadorInternet
-    iPhone --> Aplicativo
+    iPhone --> Aplicativo 
+    iPhone *-- IReprodutorMusical
+    iPhone *-- IAparelhoTelefonico
+    iPhone *-- INavegadorInternet
 
-    ReprodutorMusical ..|> IReprodutorMusical
-    AparelhoTelefonico ..|> IAparelhoTelefonico
-    NavegadorInternet ..|> INavegadorInternet
+    IReprodutorMusical  <|.. ReprodutorMusical
+    IAparelhoTelefonico <|.. AparelhoTelefonico
+    INavegadorInternet  <|.. NavegadorInternet 
+    
+
+    class iPhone {
+        -ReprodutorMusical
+        -AparelhoTelefonico
+        -NavegadorInternet
+
+      +AbrirReprodutorMusical()
+      +AbrirAparelhoTelefonico()
+      +AbrirNavegadorInternet()
+    }
+
+    class Aplicativo {
+    <<enumeration>>
+    REPRODUTOR_MUSICAL
+    APARELHO_TELEFONICO
+    NAVEGADOR_INTERNET
+    }
 
     class IReprodutorMusical {
     <<interface>> 
@@ -49,21 +75,6 @@ classDiagram
         +atualizarPagina()
     }
 
-    class iPhone {
-        -ReprodutorMusical
-        -AparelhoTelefonico
-        -NavegadorInternet
-
-      +AbrirReprodutorMusical()
-      +AbrirAparelhoTelefonico()
-      +AbrirNavegadorInternet()
-    }
-
-    class Aplicativo {
-    <<enumeration>>
-    REPRODUTOR_MUSICAL
-    APARELHO_TELEFONICO
-    NAVEGADOR_INTERNET
-    }
+    
 
 ```

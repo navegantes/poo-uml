@@ -1,14 +1,14 @@
 package iPhone;
 
-import iPhone.ReprodutorMusical.ReprodutorMusical;
-import iPhone.AparelhoTelefonico.AparelhoTelefonico;
-import iPhone.NavegadorInternet.NavegadorInternet;
+import iPhone.ReprodutorMusical.*;
+import iPhone.AparelhoTelefonico.*;
+import iPhone.NavegadorInternet.*;
 
 public class iPhone {
 
-    private ReprodutorMusical reprodutorMusical;
-    private AparelhoTelefonico aparelhoTelefonico;
-    private NavegadorInternet navegadorInternet;
+    private IReprodutorMusical reprodutorMusical;
+    private IAparelhoTelefonico aparelhoTelefonico;
+    private INavegadorInternet navegadorInternet;
 
     public iPhone() {
         System.out.println("Iniciando iPhone...");
